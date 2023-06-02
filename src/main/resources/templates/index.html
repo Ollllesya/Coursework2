@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>main page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+<body style="text-align: center;">
+<div th:replace="fragments/header :: header"></div>
+<h1>Курсова робота з баз даних</h1>
+<h2>Тема: Облік видачі книг у бібліотеці</h2>
+<h2>Виконала роботу студентка групи ІС-13 факультету ФІОТ Скидан Олеся</h2>
+<p>У студентську бібліотеку звертаються студенти, що бажають отримати учбову
+    літературу. При оформленні заявки на літературу необхідно отримати бланк замовлення, в
+    якому треба вказати точну назву книги, авторів і рік видання; бланк замовлення можна
+    отримати у бібліотекаря відповідного відділу.
+    Якщо якісь реквізити книги невідомі, то студент прямує в каталог бібліотеки для
+    заповнення бланка. Заповнений бланк віддається бібліотекарю, де відбувається перевірка
+    студента. Якщо на студентові числиться більше 10 книг, то в отриманні нової книги йому
+    відмовляють.
+    Подані заявки передаються в сховище бібліотеки, де по кожній заявці працівник
+    сховища або знаходить книгу, або вказує на бланку замовлення її відсутність. Після цього
+    всі розглянуті замовлення передаються назад бібліотекарю, який видає замовлення
+    студентам.
+</p>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

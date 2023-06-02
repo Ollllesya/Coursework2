@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: library
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+        type:
+          preferred_instant_jdbc_type: TIMESTAMP
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;trustServerCertificate=true;Database=library-db
+    username: olesia
+    password: 1234
+
+
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Students</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" rel="stylesheet">
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container my-2">
+    <div class="card">
+        <div class="card-body">
+            <div class="container my-5" th:switch="${students}">
+                <p class="my-5">
+                <div class="search">
+                    <i class="fa fa-search"></i>
+                    <form action="#" method="get" th:action="@{/students}">
+                        <input class="form-control" id="keyword" name="keyword" placeholder="Enter keyword" required
+                               th:value="${keyword}"
+                               type="search">
+                        <button class="btn btn-secondary" type="submit">Search</button>
+                    </form>
+                </div>
+
+                </p>
+                <p class="my-5">
+                    <a class="btn btn-primary" href="/students/add"><i
+                            class="fas fa-user-plus ml-2"> Add Student</i></a>
+                </p>
+                <div class="col-md-10">
+                    <h2 th:case="null">No Students yet!</h2>
+                    <div th:case="*">
+                        <table class="table table-striped table-responsive-md">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>First name</th>
+                                <th>Last name</th>
+                                <th>Student card</th>
+                                <th>Active request count</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="student : ${students}">
+                                <td th:text="${student.id}"></td>
+                                <td th:text="${student.firstName}"></td>
+                                <td th:text="${student.lastName}"></td>
+                                <td th:text="${student.studentCard}"></td>
+                                <td th:text="${student.activeRequestsCount}"></td>
+                                <td><a class="btn btn-primary" th:href="@{/students/edit/{id}(id=${student.id})}"><i
+                                        class="fas fa-user-edit ml-2"></i></a></td>
+                                <td><a class="btn btn-primary" th:href="@{/students/delete/{id}(id=${student.id})}"><i
+                                        class="fas fa-user-times ml-2"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>

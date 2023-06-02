@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Requests</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" rel="stylesheet">
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container my-2">
+    <div class="card">
+        <div class="card-body">
+            <div class="container my-5" th:switch="${requests}">
+                <p class="my-5">
+                    <a class="btn btn-primary" href="/requests/add"><i
+                            class="fas fa-user-plus ml-2"> Add Requests</i></a>
+                </p>
+                <div class="col-md-10">
+                    <h2 th:case="null">No Requests yet!</h2>
+                    <div th:case="*">
+                        <table class="table table-striped table-responsive-md">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Book title</th>
+                                <th>Student name</th>
+                                <th>Open date</th>
+                                <th>Close date</th>
+                                <th>Close</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="request : ${requests}">
+                                <td th:text="${request.id}"></td>
+                                <td th:text="${request.book.title}"></td>
+                                <td th:text="${request.student.firstName}"></td>
+                                <td th:text="${request.creatingDate}"></td>
+                                <td th:text="${request.returnedDate}"></td>
+                                <td><a class="btn btn-primary" th:href="@{/requests/close/{id}(id=${request.id})}"><i
+                                        class="fas fa-user-edit ml-2"></i></a></td>
+                                <td><a class="btn btn-primary" th:href="@{/requests/delete/{id}(id=${request.id})}"><i
+                                        class="fas fa-user-times ml-2"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>

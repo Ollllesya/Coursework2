@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      relativeToChangelogFile: true
+      file: changes/1-student-table-creating.sql
+  - include:
+      relativeToChangelogFile: true
+      file: changes/2-book-table-creating.sql
+  - include:
+      relativeToChangelogFile: true
+      file: changes/3-request-table-creating.sql

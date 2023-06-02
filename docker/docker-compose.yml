@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  mssqldb:
+    build: db
+    ports:
+      - "1433:1433"
